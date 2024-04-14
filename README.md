@@ -1,9 +1,9 @@
 # Basic-Python-Interpreter
 
 
-BNF:
+Language BNF:
 
-program ::= program statement | %empty
+program ::= <program> <statement> | %empty
 <statement> ::= <if_statement>
             | <while_statement>
             | <assign_statement>
