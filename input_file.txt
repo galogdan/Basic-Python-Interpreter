@@ -1,0 +1,58 @@
+x = 10 
+y = x + 5
+
+if (y < x) {
+y = x 
+
+}
+
+else {
+
+y = 35
+n = x + y
+}
+
+i = 0 
+sum = 0
+
+while (i < 5) {
+
+i = i + 1 
+sum = sum + 10
+}
+
+sec_sum = 0
+third_sum = 0
+j = 10
+
+while (j > 0) {
+
+if (j > 5) {
+
+sec_sum = j + sec_sum
+}
+
+else {
+
+third_sum = third_sum + j
+}
+
+j = j - 1
+
+}
+
+if (sec_sum > third_sum) {
+
+while (sec_sum > third_sum) {
+
+sec_sum = sec_sum / (third_sum + 1)
+
+}
+
+}
+
+
+
+
+
+
