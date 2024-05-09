@@ -10,7 +10,6 @@ LETTERS = 'abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 def generate_tokens(text):  # main tokenizing function
     text_iter = iter(text)
     current_char = next(text_iter, None)
-    line = 1
 
     def advance():
         nonlocal current_char
@@ -131,6 +130,6 @@ def generate_tokens(text):  # main tokenizing function
             advance()
             yield Token(TokenType.RBRACK)
         else:
-            raise Exception(f"Illegal character '{current_char}' in line '{line}'")
+            raise Exception(f"Illegal character '{current_char}'")
 
 
