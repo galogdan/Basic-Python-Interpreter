@@ -2,16 +2,14 @@ from tokens import TokenType, Token
 from nodes import *
 
 
-def raise_error(line):  # syntax errors handling
+def raise_error():  # syntax errors handling
     raise Exception(f"Invalid syntax")
 
 
 def parse(tokens):  # parse function
     tokens_iter = iter(tokens)
-    line = 1
 
     def advance(): # advance tokens
-        nonlocal line
         try:
             token = next(tokens_iter)
             return token
@@ -43,7 +41,7 @@ def parse(tokens):  # parse function
         consume(TokenType.RPAREN)
         body = None
         if current_token.type != TokenType.LBARCK:
-            raise_error(line)
+            raise_error()
         if current_token.type == TokenType.LBARCK:
             body = block()  # Parse multiple statements
         else:
@@ -53,7 +51,7 @@ def parse(tokens):  # parse function
         if current_token is not None and current_token.type == TokenType.ELSE:
             consume(TokenType.ELSE)
             if current_token.type != TokenType.LBARCK:
-                raise_error(line)
+                raise_error()
             if current_token.type == TokenType.LBARCK:
                 else_body = block()  # Parse multiple statements in else block
             else:
@@ -135,14 +133,14 @@ def parse(tokens):  # parse function
             consume(TokenType.VARIABLE)
             return VariableNode(var_name)
 
-        raise_error(line)
+        raise_error()
 
     def consume(token_type):  # consuming tokens
         nonlocal current_token
         if current_token is not None and current_token.type == token_type:
             current_token = advance()
         else:
-            raise_error(line)
+            raise_error()
 
     def block():  # block of statements
         statements = []
